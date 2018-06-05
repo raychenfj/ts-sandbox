@@ -1,14 +1,14 @@
 // ⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇
-//   Solution 4 – Interfaces
+//   Solution 2 – Interfaces
 // ⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈
 
-// Objectives: 
+// Objectives:
 // • Demonstrate structural typing (duck typing)
 // • Create an interface and implement it on a class
 // • Differentiate type aliases from interfaces
 
 export default () => {
-  // ======== Solution 4.1 ========
+  // ======== Solution 2.1 ========
   // Instructions:
   // • Create an interface `CartItem` and replace the param type with it
   // • Make variantId optional
@@ -20,12 +20,12 @@ export default () => {
   }
 
   function addToCart(item: CartItem) {
-    console.log('[Solution 4.1]', `Adding "${item.title}" to cart`);
+    console.log('[Solution 2.1]', `Adding "${item.title}" to cart`);
   }
 
   addToCart({ id: 1, title: 'Concrete shoes' })
 
-  // ======== Solution 4.2 ========
+  // ======== Solution 2.2 ========
   // Instructions:
   // • Create and implement an interface on `Person` to ensure it always has accessible
   //   `name` and `age` member properties.
@@ -41,9 +41,9 @@ export default () => {
 
   const jane = new Person('Jane', 31);
 
-  console.log('[Solution 4.2]', `${jane.name} is ${jane.age} years old.`);
+  console.log('[Solution 2.2]', `${jane.name} is ${jane.age} years old.`);
 
-  // ======== Solution 4.3 ========
+  // ======== Solution 2.3 ========
   // Instructions:
   // • Create an interface `Coords` that has numeric `latitude` and `longitude` properties.
   // • Extend the existing interface `City` (without modifying it inline) by adding a
@@ -86,7 +86,7 @@ export default () => {
     return `${city.name.toUpperCase()} is located at ${coords}.`;
   }
 
-  console.log('[Solution 4.3]', `${getCityInfo(montreal)} \n\n ${getCityInfo(tampa)}`);
+  console.log('[Solution 2.3]', `${getCityInfo(montreal)} \n\n ${getCityInfo(tampa)}`);
 }
 
 // ======== Exercise 4.4 ========
