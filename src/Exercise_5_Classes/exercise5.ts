@@ -1,14 +1,14 @@
 // ⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇
-//    Exercise 3 – Classes
+//    Exercise 5 – Classes
 // ⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈
 
-// Objectives: 
+// Objectives:
 // • Create classes with typed properties and methods
 // • Add access modifiers to class members
 
 export default () => {
 
-  // ======== Exercise 3.1 ========
+  // ======== Exercise 5.1 ========
   // Goals:
   // • Add explicit parameter type to the greet method
   // • Add explicit return type to the greet method
@@ -20,10 +20,10 @@ export default () => {
   }
 
   const mc = new MC();
-  console.log('[Exercise 3.1]', mc.greet('show'));
+  console.log('[Exercise 5.1]', mc.greet('show'));
 
 
-  // ======== Exercise 3.2 ========
+  // ======== Exercise 5.2 ========
   // Goals:
   // • Add explicit parameter types to constructor
   // • Add typed parameters for storing values
@@ -37,10 +37,10 @@ export default () => {
 
   const jane = new Person('Jane', 31);
 
-  console.log('[Exercise 3.2]', `The new person's name is ${jane.name}.`);
+  console.log('[Exercise 5.2]', `The new person's name is ${jane.name}.`);
 
 
-  // ======== Exercise 3.3 ========
+  // ======== Exercise 5.3 ========
   // Goals:
   // • Explicitly make the title and salary properties publicly available
   // • Reduce class to three lines of code while maintaining functionality
@@ -56,10 +56,10 @@ export default () => {
 
   const employee = new Employee('Engineer', 100000);
 
-  console.log('[Exercise 3.3]', `The new employee's title is ${employee.title} and they earn $ ${employee.salary}.`);
+  console.log('[Exercise 5.3]', `The new employee's title is ${employee.title} and they earn $ ${employee.salary}.`);
 
 
-  // ======== Exercise 3.4 ========
+  // ======== Exercise 5.4 ========
   // Goals:
   // • Add complete typing
   // • Make the Snake class inherit from Animal
@@ -102,9 +102,9 @@ export default () => {
   pokey.move(34);
   console.log(pokey.name); // Should return error
 
-  // ======== Exercise 3.5 ========
+  // ======== Exercise 5.5 ========
   // Goals:
-  // • Make it so that only the Desk and Chair classes can see the 
+  // • Make it so that only the Desk and Chair classes can see the
   //   manufacturer member
 
   class Furniture {
@@ -113,13 +113,13 @@ export default () => {
 
   class Desk extends Furniture {
     kind() {
-      console.log('[Exercise 3.5]', `This is a desk made by ${this.manufacturer}`);
+      console.log('[Exercise 5.5]', `This is a desk made by ${this.manufacturer}`);
     }
   }
 
   class Chair extends Furniture {
     kind() {
-      console.log('[Exercise 3.5]', `This is a chair made by ${this.manufacturer}`);
+      console.log('[Exercise 5.5]', `This is a chair made by ${this.manufacturer}`);
     }
   }
 
@@ -131,7 +131,7 @@ export default () => {
   chair.kind();
   chair.manufacturer; // Should return error
 
-  // ======== Exercise 3.6 ========
+  // ======== Exercise 5.6 ========
   // Goals:
   // • Eliminate the error without changing references to `Student.school`
 
@@ -139,7 +139,7 @@ export default () => {
     public school: string = 'Harry Herpson High School';
     constructor(private name: string) {};
     introduction() {
-      console.log('[Exercise 3.6]', `Hi, my name is ${this.name} and I attend ${Student.school}`);
+      console.log('[Exercise 5.6]', `Hi, my name is ${this.name} and I attend ${Student.school}`);
     }
   }
 

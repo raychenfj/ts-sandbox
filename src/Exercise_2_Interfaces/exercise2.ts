@@ -1,25 +1,25 @@
 // ⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇
-//   Exercise 4 – Interfaces
+//   Exercise 2 – Interfaces
 // ⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈
 
-// Objectives: 
+// Objectives:
 // • Demonstrate structural typing (duck typing)
 // • Create an interface and implement it on a class
 // • Differentiate type aliases from interfaces
 
 export default () => {
-  // ======== Exercise 4.1 ========
+  // ======== Exercise 2.1 ========
   // Instructions:
   // • Create an interface `CartItem` and replace the param's type with it
   // • Make variantId optional
 
   function addToCart(item: {id: number, title: string, variantId: number}) {
-    console.log('[Exercise 4.1]', `Adding "${item.title}" to cart.`);
+    console.log('[Exercise 2.1]', `Adding "${item.title}" to cart.`);
   }
 
   addToCart({id: 1, title: 'Concrete shoes'});
 
-  // ======== Exercise 4.2 ========
+  // ======== Exercise 2.2 ========
   // Instructions:
   // • Create and implement an interface on `Person` to ensure it always has accessible
   //   `name` and `age` member properties.
@@ -30,9 +30,9 @@ export default () => {
 
   const jane = new Person('Jane', 31);
 
-  console.log('[Exercise 4.2]', `${jane.name} is ${jane.age} years old.`);
+  console.log('[Exercise 2.2]', `${jane.name} is ${jane.age} years old.`);
 
-  // ======== Exercise 4.3 ========
+  // ======== Exercise 2.3 ========
   // Instructions:
   // • Create an interface `Coords` that has numeric `latitude` and `longitude` properties.
   // • Extend the existing interface `City` (without modifying it inline) by adding a
@@ -66,9 +66,9 @@ export default () => {
     return `${city.name.toUpperCase()} is located at ${coords}.`;
   }
 
-  console.log('[Exercise 4.3]', `${getCityInfo(montreal)} \n\n ${getCityInfo(tampa)}`);
+  console.log('[Exercise 2.3]', `${getCityInfo(montreal)} \n\n ${getCityInfo(tampa)}`);
 
-  // ======== Exercise 4.4 ========
+  // ======== Exercise 2.4 ========
   // The purpose of this exercise is simply to illustrate a use of `readonly`
 
   interface UserSchema {
