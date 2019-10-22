@@ -45,7 +45,7 @@ export default () => {
     text; // text: never
   }
 
-  function trimmedLength2(text: string | null | undefined) {
+  function trimmedLength3(text: string | null | undefined) {
     if (text) {
       return text.trim().length;
     }
@@ -53,7 +53,7 @@ export default () => {
     text; // text: string | null | undefined (because '' == false)
   }
 
-  function trimmedLength3(text: string | null | undefined) {
+  function trimmedLength4(text: string | null | undefined) {
     if (!text) {
       text;
       return;
@@ -62,7 +62,7 @@ export default () => {
     return text.trim().length; // text: string
   }
 
-  function trimmedLength4(text: any) {
+  function trimmedLength5(text: any) {
     text; // text: any
 
     if (typeof text === 'string') {
@@ -79,7 +79,7 @@ export default () => {
   // • Restrict type of `value` to `string OR number`
   // • Fix any resulting errors.
 
-  function doStuff(value: any): void {
+  function doStuff(value: string | number): void {
     if (typeof value === 'string') {
       console.log(value.toUpperCase().split('').join(' '));
     } else if (typeof value === 'number') {
@@ -93,8 +93,8 @@ export default () => {
   doStuff(22);
   doStuff(222);
   doStuff('hello');
-  doStuff(true);
-  doStuff({});
+  doStuff('true');
+  doStuff('{}');
 
   console.log('[Exercise 4.1]');
 
@@ -105,15 +105,21 @@ export default () => {
   function padLeft(value: string, padding: number | string): string {
     // if padding is a number, return `${Array(padding + 1).join(' ')}${value}`
     // if padding is a string, return padding + value
+    if (typeof padding === 'number') {
+      return `${Array(padding + 1).join(' ')}${value}`
+    } else if (typeof padding === 'string') {
+      return padding + value
+    }
+    return ''
   }
 
   console.log('[Exercise 4.2]', `
-    ${padLeft('🐕', 0)}
-    ${padLeft('🐕', '🐩')}
-    ${padLeft('🐕', '🐩🐩')}
-    ${padLeft('🐕', '🐩🐩🐩')}
-    ${padLeft('🐕', '🐩🐩🐩🐩')}
-  `);
+      ${ padLeft('🐕', 0)}
+      ${ padLeft('🐕', '🐩')}
+      ${ padLeft('🐕', '🐩🐩')}
+      ${ padLeft('🐕', '🐩🐩🐩')}
+      ${ padLeft('🐕', '🐩🐩🐩🐩')}
+      `);
 
   // ======== Exercise 4.3 ========
   // Instructions:
@@ -121,9 +127,9 @@ export default () => {
   // • Inspect inferred type of `element` in different code branches
   // • Bonus: turn `flatten` into a generic function
 
-  const numbers = [1, 2, 3, [44, 55], 6, [77, 88], 9, 10];
+  const numbers: Array<number | Array<number>> = [1, 2, 3, [44, 55], 6, [77, 88], 9, 10];
 
-  function flatten(array) {
+  function flatten<T>(array: Array<T | Array<T>>): Array<T> {
     const flattened = [];
 
     for (const element of array) {
@@ -149,7 +155,7 @@ export default () => {
   // • Birds and Fish both lay eggs. Only Birds fly. Only Fish swim. Define
   //   two new types: `BirdLike` and `FishLike` based on these traits.
   // • Create a type alias for `Bird OR Fish` called `Animal`
-  // • Use an `instanceof` type guard in `interrogateAnimal` to allow the fishes
+  // • Use an `instanceof ` type guard in `interrogateAnimal` to allow the fishes
   //   to swim the and birds to fly.
   // • Add any missing type annotations, being as explicit as possible.
 
@@ -165,10 +171,16 @@ export default () => {
     swim(depth: number): void;
   }
 
+  type BirdLike = EggLayer & Flyer
+  type FishLike = EggLayer & Swimmer
+  type Animal = (BirdLike | FishLike) & {
+    species: string;
+  }
+
   // add type alias(es) here
 
   class Bird implements BirdLike {
-    constructor(public species: string) {}
+    constructor(public species: string) { }
 
     layEggs(): void {
       console.log('Laying bird eggs.');
@@ -180,7 +192,7 @@ export default () => {
   };
 
   class Fish implements FishLike {
-    constructor(public species: string) {}
+    constructor(public species: string) { }
 
     layEggs(): void {
       console.log('Laying fish eggs.');
@@ -191,8 +203,8 @@ export default () => {
     }
   }
 
-  function getRandomAnimal() {
-    const animals = [
+  function getRandomAnimal(): Animal {
+    const animals: Array<Animal> = [
       new Bird('puffin'),
       new Bird('kittiwake'),
       new Fish('sea robin'),
@@ -202,9 +214,12 @@ export default () => {
     return animals[Math.floor(Math.random() * animals.length)];
   }
 
-  function interrogateAnimal(animal = getRandomAnimal()) {
-    animal.swim(10) // call only if it is a fish
-    animal.fly(10); // call only if it is a bird
+  function interrogateAnimal(animal: Animal = getRandomAnimal()) {
+    if (animal instanceof Fish) {
+      animal.swim(10) // call only if it is a fish
+    } else if (animal instanceof Bird) {
+      animal.fly(10); // call only if it is a bird
+    }
 
     return animal.species;
   }

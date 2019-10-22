@@ -16,12 +16,12 @@
 // exercise2();
 
 // ======== Exercise 3: Functions ============
-import exercise3 from './Exercise_3_Functions/exercise3';
-exercise3();
+// import exercise3 from './Exercise_3_Functions/exercise3';
+// exercise3();
 
 // ======== Exercise 4: Types =========
-// import exercise4 from './Exercise_4_Types/exercise4';
-// exercise4();
+import exercise4 from './Exercise_4_Types/exercise4';
+exercise4();
 
 // ======== Exercise 5: Code flow  =========
 // import exercise5 from './Exercise_5_Classes/exercise5';
