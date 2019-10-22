@@ -14,15 +14,15 @@ export default () => {
   // • Add explicit parameter types and return type
   // • Fix any errors resulting from invalid types
 
-  function add(x, y) {
+  function add(x: number, y: number): number {
     return x + y;
   }
 
-  function sumArray(numbers) {
+  function sumArray(numbers: Array<number>) {
     return numbers.reduce(add, 0);
   }
 
-  const someSum = sumArray(['3', '6', '9']);
+  const someSum = sumArray(['3', '6', '9'].map(Number));
 
   console.log('[Exercise 3.1]', `3 + 6 + 9 === ${someSum}`);
 
@@ -33,7 +33,7 @@ export default () => {
 
   const bankAccount = {
     money: 0,
-    deposit(value, message) {
+    deposit(value: number, message?: string) {
       this.money += value;
       if (message) {
         console.log(message);
@@ -51,13 +51,13 @@ export default () => {
   // Instructions:
   // • Add type annotations wherever possible
 
-  function computeScore(word) {
-    const letters = word.toUpperCase().split('');
-    return letters.reduce((accum, curr) => accum += getPointsFor(curr), 0);
+  function computeScore(word: string) {
+    const letters: Array<string> = word.toUpperCase().split('');
+    return letters.reduce((accum: number, curr: string) => accum += getPointsFor(curr), 0);
   }
 
-  function getPointsFor(letter) {
-    const lettersAndPoints = [
+  function getPointsFor(letter: string) {
+    const lettersAndPoints: Array<[string, number]> = [
       ['AEOIULNRST', 1],
       ['DG', 2],
       ['BCMP', 3],
@@ -67,7 +67,7 @@ export default () => {
       ['QZ', 10],
     ];
 
-    return lettersAndPoints.reduce((computedScore, pointsTuple) => {
+    return lettersAndPoints.reduce((computedScore: number, pointsTuple: [string, number]) => {
       const [letters, score] = pointsTuple;
       if (letters.split('').find((ll) => ll === letter)) {
         return computedScore += score;
@@ -83,7 +83,7 @@ export default () => {
   // • Add explicit parameter types and return types
   // • Add a default greeting: "hello"
 
-  function greet(greeting) {
+  function greet(greeting: string = 'hello') {
     return greeting.toUpperCase();
   }
 
@@ -97,7 +97,7 @@ export default () => {
   // • Add parameter type annotation
   // • Even though this function doesn't return, add an explicit return type
 
-  function layEggs(quantity, color) {
+  function layEggs(quantity?: number, color?: string): void {
     console.log(`[Exercise 3.5] You just laid ${quantity} ${color} eggs. Good job!`);
   }
 
@@ -112,11 +112,11 @@ export default () => {
   let multiply: (val1: number, val2: number) => number;
   let capitalize: (val: string) => string;
 
-  multiply = function(value: string): string {
+  capitalize = function (value: string): string {
     return `${value.charAt(0).toUpperCase()}${value.slice(1)}`;
   }
 
-  capitalize = function(x: number, y: number): number {
+  multiply = function (x: number, y: number): number {
     return x * y;
   }
 
@@ -142,21 +142,21 @@ export default () => {
   const numberCollection: number[] = [];
   const stringCollection: string[] = [];
 
-  function pushToCollection(item, collection) {
+  function pushToCollection<T>(item: T, collection: Array<T>): Array<T> {
     collection.push(item);
     return collection;
   }
 
   // Add some stuff to the collections
-  pushToCollection(false, stringCollection);
+  pushToCollection('false', stringCollection);
   pushToCollection('hi', stringCollection);
-  pushToCollection([], stringCollection);
+  pushToCollection('[]', stringCollection);
 
-  pushToCollection('1', numberCollection);
-  pushToCollection('2', numberCollection);
-  pushToCollection('3', numberCollection);
+  pushToCollection(1, numberCollection);
+  pushToCollection(2, numberCollection);
+  pushToCollection(3, numberCollection);
 
-  const incrementedByTwo = numberCollection.map((num) => num + 2);
+  const incrementedByTwo: Array<number> = numberCollection.map((num) => num + 2);
 
   console.log('[Exercise 3.7]', `[${incrementedByTwo}] should deeply equal [3,4,5]`);
 }
