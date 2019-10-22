@@ -20,12 +20,12 @@
 // exercise3();
 
 // ======== Exercise 4: Types =========
-import exercise4 from './Exercise_4_Types/exercise4';
-exercise4();
+// import exercise4 from './Exercise_4_Types/exercise4';
+// exercise4();
 
 // ======== Exercise 5: Code flow  =========
-// import exercise5 from './Exercise_5_Classes/exercise5';
-// exercise5();
+import exercise5 from './Exercise_5_Classes/exercise5';
+exercise5();
 
 
 // ⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇⏇
